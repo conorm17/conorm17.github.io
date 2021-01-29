@@ -1,7 +1,9 @@
 <html>
 
 <head>
-
+<style>face{
+    width:50px ;
+}</style>
     <title>conors web page
 
     </title>
@@ -17,5 +19,50 @@
             <a href="games.html">games</a>
         </li>
     </ol>
+  
+<html>
+<style>
+#myContainer {
+  width: 50px;
+  height: 5opx;
+  position: relative;
+  background: yellow;
+}
+#myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button> 
+</p>
+
+<div id ="myContainer">
+<img id="myAnimation" src="img/IMG_0573.JPG" alt="">
+</div>
+
+<script>
+function myMove() {
+  var elem = document.getElementById("myAnimation");   
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+</script>
+
+</body>
+</html>
 </body>
 </html>
