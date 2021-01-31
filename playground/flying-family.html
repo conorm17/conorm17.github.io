@@ -1,0 +1,161 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>jQuery animation example</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <style>
+    body,
+    * {
+      padding: 0 !important;
+      margin: 0:
+    }
+
+    #wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    li {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      -webkit-border-radius: 30px;
+      -moz-border-radius: 30px;
+      border-radius: 30px;
+      background-color: #0FF;
+      line-height: 60px;
+      text-align: center;
+      cursor: pointer;
+      list-style-type: none;
+
+
+    }
+
+    #wrapper>li>img {
+      widows: 100px;
+      height: 100px;
+    }
+  </style>
+  <script>
+    $.fn.bounce = function (options) {
+
+      var settings = $.extend({
+        speed: 10
+      }
+
+        , options);
+
+      return $(this).each(function () {
+
+        var $this = $(this),
+          $parent = $this.parent(),
+          height = $parent.height(),
+          width = $parent.width(),
+          top = Math.floor(Math.random() * (height / 2)) + height / 4,
+          left = Math.floor(Math.random() * (width / 2)) + width / 4,
+          vectorX = settings.speed * (Math.random() > 0.5 ? 1 : -1),
+          vectorY = settings.speed * (Math.random() > 0.5 ? 1 : -1);
+
+        // place initialy in a random location
+        $this.css({
+          'top': top,
+          'left': left
+        }
+
+        ).data('vector', {
+          'x': vectorX,
+          'y': vectorY
+        }
+
+        );
+
+        var move = function ($e) {
+
+          var offset = $e.offset(),
+            width = $e.width(),
+            height = $e.height(),
+            vector = $e.data('vector'),
+            $parent = $e.parent();
+
+          if (offset.left <= 0 && vector.x < 0) {
+            vector.x = -1 * vector.x;
+          }
+
+          if ((offset.left + width) >= $parent.width()) {
+            vector.x = -1 * vector.x;
+          }
+
+          if (offset.top <= 0 && vector.y < 0) {
+            vector.y = -1 * vector.y;
+          }
+
+          if ((offset.top + height) >= $parent.height()) {
+            vector.y = -1 * vector.y;
+          }
+
+          $e.css({
+            'top': offset.top + vector.y + 'px',
+            'left': offset.left + vector.x + 'px'
+          }
+
+          ).data('vector', {
+            'x': vector.x,
+            'y': vector.y
+          }
+
+          );
+
+          setTimeout(function () {
+            move($e);
+          }
+
+            , 50);
+
+        }
+
+          ;
+
+        move($this);
+      }
+
+      );
+
+    }
+
+      ;
+
+    $(function () {
+      $('#wrapper li').bounce({
+        'speed': 7
+      }
+
+      );
+    }
+
+    );
+  </script>
+</head>
+
+<body style="overflow:hidden">
+  <ul id="wrapper">
+    <li><img src="../img/dad.JPG"></li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+</body>
+
+</html>

@@ -1,68 +1,75 @@
 <html>
 
 <head>
-<style>face{
-    width:50px ;
-}</style>
-    <title>conors web page
+  <style>
+    face {
+      width: 50px;
+    }
+  </style>
+  <title>conors web page
 
-    </title>
+  </title>
+  <!-- added jquery library -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+  <script>
+    function myMove() {
+      var elem = document.getElementById("myContainer");
+      var pos = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (pos == 350) {
+          clearInterval(id);
+        } else {
+          pos++;
+          elem.style.top = pos + ' px'; elem.style.left = pos + 'px';
+        }
+      }
+    } </script>
+  <style>
+    #myContainer {
+      width: 50px;
+      height: 5opx;
+      position: relative;
+      background: yellow;
+    }
+
+    #myAnimation {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+
+    }
+  </style>
 </head>
 
-<body>
-    <h1>conors web page</h1>
-    <ol>
-        <li>
-            <a href="videos.html">videos</a>
-        </li>
-        <li>
-            <a href="games.html">games</a>
-        </li>
-    </ol>
-  
-<html>
-<style>
-#myContainer {
-  width: 50px;
-  height: 5opx;
-  position: relative;
-  background: yellow;
-}
-#myAnimation {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  background-color: red;
-}
-</style>
-<body>
+<body onload='myMove()' )>
+  <h1>conors web page</h1>
+  <ol>
+    <li>
+      <a href="videos.html">videos</a>
+    </li>
+    <li>
+      <a href="games.html">games</a>
+    </li>
+  </ol>
 
-<p>
-<button onclick="myMove()">Click Me</button> 
-</p>
 
-<div id ="myContainer">
-<img id="myAnimation" src="img/IMG_0573.JPG" alt="">
-</div>
 
-<script>
-function myMove() {
-  var elem = document.getElementById("myAnimation");   
-  var pos = 0;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (pos == 350) {
-      clearInterval(id);
-    } else {
-      pos++; 
-      elem.style.top = pos + 'px'; 
-      elem.style.left = pos + 'px'; 
-    }
-  }
-}
-</script>
+
+
+
+  <div id="myContainer">
+    <img id="myAnimation" src="img/IMG_0573.JPG" alt="">
+  </div>
+
+
 
 </body>
+
 </html>
 </body>
+
 </html>
